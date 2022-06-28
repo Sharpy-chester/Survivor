@@ -7,7 +7,6 @@ public class EnemyDamage : MonoBehaviour
     [SerializeField] int startingHealth = 3;
     int currentHealth;
     Animator anim;
-    [SerializeField] GameObject XPPrefab;
 
     void Awake()
     {
@@ -32,8 +31,6 @@ public class EnemyDamage : MonoBehaviour
             anim.SetBool("Dead", true);
             Destroy(GetComponent<Collider2D>());
             Destroy(GetComponent<EnemyMovement>());
-            GameObject xp = Instantiate(XPPrefab, transform);
-            xp.transform.parent = null;
             GetComponent<AudioSource>().Play(); //if i change the sound on this and the sound is longer than the death anim, it will get cut off
         }
         else
